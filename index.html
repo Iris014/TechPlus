@@ -1,17 +1,210 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechPlus</title>
+    <title>TechPlus - Soluciones Informáticas</title>
     <link rel="stylesheet" href="static/css/style.css">
 </head>
+
 <body>
-    <header>
+    <!-- NAVEGACIÓN -->
+    <header class="header">
+        <div class="logo">
+            <span class="logo-icon">💻</span>
+            <div class="logo-texto">
+                <strong>TechPlus</strong>
+                <span>Soluciones informáticas</span>
+            </div>
+        </div>
+
         <nav class="nav">
-            
+            <a href="#inicio" class="activo">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#contacto">Contacto</a>
         </nav>
+
+        <div class="buscador">
+            <input type="text" id="inputBuscar" placeholder="Buscar servicios...">
+            <button id="btnBuscar">Buscar</button>
+        </div>
     </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+        <!-- HERO / CARRUSEL PRINCIPAL -->
+        <section class="hero" id="inicio">
+            <div class="hero-info">
+                <span class="subtitulo-hero">SOPORTE Y SOLUCIONES</span>
+                <h1>Tecnología que impulsa tu negocio</h1>
+                <p>Soporte, desarrollo y asesoría informática para empresas y personas.</p>
+                <a href="#servicios" class="btn-principal">Ver servicios →</a>
+            </div>
+
+            <!-- CARRUSEL -->
+            <div class="carrusel-contenedor" id="carruselPrincipal">
+                <div class="carrusel-imagen-box" id="carruselBox">
+                    <button class="carrusel-flecha izq" id="carruselIzq">◄</button>
+                    <button class="carrusel-flecha der" id="carruselDer">►</button>
+
+                    <div class="carrusel-pie">
+                        <span class="carrusel-titulo" id="carruselTitulo">Soporte técnico en terreno</span>
+                        <div class="carrusel-puntos" id="carruselPuntos">
+                            <span class="punto activo" data-index="0"></span>
+                            <span class="punto" data-index="1"></span>
+                            <span class="punto" data-index="2"></span>
+                            <span class="punto" data-index="3"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NUESTROS SERVICIOS -->
+        <section class="servicios-section" id="servicios">
+            <h2>Nuestros servicios</h2>
+            <div class="servicios-grid">
+                <div class="tarjeta-servicio">
+                    <div class="imagen-servicio-box" data-hover="static/images/soporte-hover.jpg">
+                        <div class="placeholder-cross img-normal">Soporte Técnico - Vista 1</div>
+                        <div class="placeholder-cross img-hover">Soporte Técnico - Vista 2</div>
+                    </div>
+                    <h3>Soporte técnico</h3>
+                    <p>Mantención, diagnóstico y soluciones rápidas.</p>
+                    <button class="btn-secundario">Ver más</button>
+                </div>
+
+                <div class="tarjeta-servicio">
+                    <div class="imagen-servicio-box" data-hover="static/images/redes-hover.jpg">
+                        <div class="placeholder-cross img-normal">Redes - Vista 1</div>
+                        <div class="placeholder-cross img-hover">Redes - Vista 2</div>
+                    </div>
+                    <h3>Redes y conectividad</h3>
+                    <p>Instalación y configuración de redes corporativas.</p>
+                    <button class="btn-secundario">Ver más</button>
+                </div>
+
+                <div class="tarjeta-servicio">
+                    <div class="imagen-servicio-box" data-hover="static/images/desarrollo-hover.jpg">
+                        <div class="placeholder-cross img-normal">Desarrollo Web - Vista 1</div>
+                        <div class="placeholder-cross img-hover">Desarrollo Web - Vista 2</div>
+                    </div>
+                    <h3>Desarrollo web</h3>
+                    <p>Sitios web modernos y funcionales.</p>
+                    <button class="btn-secundario">Ver más</button>
+                </div>
+
+                <div class="tarjeta-servicio">
+                    <div class="imagen-servicio-box" data-hover="static/images/seguridad-hover.jpg">
+                        <div class="placeholder-cross img-normal">Seguridad - Vista 1</div>
+                        <div class="placeholder-cross img-hover">Seguridad - Vista 2</div>
+                    </div>
+                    <h3>Seguridad informática</h3>
+                    <p>Protección de datos y asesoría en ciberseguridad.</p>
+                    <button class="btn-secundario">Ver más</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ÚLTIMOS PROYECTOS -->
+        <section class="proyectos-section" id="proyectos">
+            <div class="proyectos-header">
+                <h2>Últimos proyectos</h2>
+                <a href="#proyectos" class="link-ver-todos">Ver todos →</a>
+            </div>
+
+            <div class="proyectos-grid">
+                <!-- PROYECTO 1 -->
+                <div class="tarjeta-proyecto" data-id="1" data-titulo="Clínica Vida" data-categoria="Sitio web" data-descripcion="Sitio web corporativo con formulario de contacto, reserva de horas e integración con sistema médico." data-tech="HTML5, CSS3, JavaScript, PHP, MySQL">
+                    <div class="imagen-proyecto-box">
+                        <span class="badge-tag">Sitio web</span>
+                        <button class="btn-like" data-count="24">
+                            <span class="corazon">♡</span>
+                            <span class="count-like">24</span>
+                        </button>
+                        <div class="placeholder-cross">Clínica Vida</div>
+                    </div>
+                    <h3>Clínica Vida</h3>
+                    <p>Sitio web corporativo con formulario de contacto.</p>
+                </div>
+
+                <!-- PROYECTO 2 -->
+                <div class="tarjeta-proyecto" data-id="2" data-titulo="Comercial Norte" data-categoria="Redes" data-descripcion="Implementación completa de infraestructura de red de fibra óptica, firewall corporativo y servidor seguro." data-tech="Cisco, Mikrotik, VPN, Ciberseguridad">
+                    <div class="imagen-proyecto-box">
+                        <span class="badge-tag">Redes</span>
+                        <button class="btn-like" data-count="17">
+                            <span class="corazon">♡</span>
+                            <span class="count-like">17</span>
+                        </button>
+                        <div class="placeholder-cross">Comercial Norte</div>
+                    </div>
+                    <h3>Comercial Norte</h3>
+                    <p>Implementación de red y seguridad.</p>
+                </div>
+
+                <!-- PROYECTO 3 -->
+                <div class="tarjeta-proyecto" data-id="3" data-titulo="Colegio Los Robles" data-categoria="Soporte" data-descripcion="Mantención preventiva y correctiva de 80 equipos de laboratorio, migración a SSD y configuración de dominios." data-tech="Windows Server, Mantenimiento Hardware, Redes LAN">
+                    <div class="imagen-proyecto-box">
+                        <span class="badge-tag">Soporte</span>
+                        <button class="btn-like" data-count="31">
+                            <span class="corazon">♡</span>
+                            <span class="count-like">31</span>
+                        </button>
+                        <div class="placeholder-cross">Colegio Los Robles</div>
+                    </div>
+                    <h3>Colegio Los Robles</h3>
+                    <p>Mantención y soporte técnico.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contacto">
+        <div class="footer-contenido">
+            <div class="logo">
+                <span class="logo-icon">💻</span>
+                <div class="logo-texto">
+                    <strong>TechPlus</strong>
+                    <span>Soluciones informáticas</span>
+                </div>
+            </div>
+
+            <nav class="footer-nav">
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+
+            <div class="footer-sociales">
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="Instagram">ig</a>
+                <a href="#" aria-label="Facebook">fb</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DETALLE DE PROYECTO -->
+    <div class="modal-overlay" id="modalProyecto">
+        <div class="modal-contenido">
+            <button class="btn-cerrar-modal" id="btnCerrarModal">✕</button>
+            <div class="modal-imagen-box placeholder-cross" id="modalImagen">Vista Previa Proyecto</div>
+            <div class="modal-body">
+                <span class="badge-tag" id="modalTag">Categoría</span>
+                <h2 id="modalTitulo">Título del Proyecto</h2>
+                <p id="modalDescripcion">Descripción detallada del proyecto...</p>
+                <div class="modal-tech">
+                    <strong>Tecnologías utilizadas:</strong>
+                    <p id="modalTech">HTML, CSS, JS</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="static/js/script.js"></script>
 </body>
+
 </html>
