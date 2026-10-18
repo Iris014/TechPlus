@@ -1,6 +1,3 @@
-/* ================================
-   RESET Y VARIABLES
-================================ */
 * {
     margin: 0;
     padding: 0;
@@ -8,15 +5,15 @@
 }
 
 :root {
-    --azul: #1a73e8;
+    --azul: #2262AD;
     --azul-oscuro: #1557b0;
-    --negro: #1a1a1a;
+    --negro: #292C31;
     --gris-oscuro: #333333;
     --gris-medio: #666666;
     --gris-claro: #e8e8e8;
     --gris-fondo: #f9f9f9;
+    --gris-moderno: #F7F8FA;
     --blanco: #ffffff;
-    --rojo-like: #e53935;
 }
 
 body {
@@ -26,18 +23,7 @@ body {
     line-height: 1.5;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-button {
-    font: inherit;
-    cursor: pointer;
-}
-
-/* PLACEHOLDER CON TRAMA CRUZADA */
-.placeholder-cross {
+.c-placeholder {
     width: 100%;
     height: 100%;
     background-color: #cccccc;
@@ -48,17 +34,19 @@ button {
     font-size: 0.9rem;
     font-weight: bold;
     text-align: center;
-    padding: 10px;
     position: relative;
-    background-image:
-        linear-gradient(to bottom right, transparent 49.5%, #999999 49.5%, #999999 50.5%, transparent 50.5%),
-        linear-gradient(to top right, transparent 49.5%, #999999 49.5%, #999999 50.5%, transparent 50.5%);
 }
 
-/* ================================
-   HEADER
-================================ */
-.header {
+.c-placeholder img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* HEADER */
+.c-header {
     width: 100%;
     padding: 15px 5%;
     display: flex;
@@ -71,91 +59,122 @@ button {
     z-index: 100;
 }
 
-.logo {
+.c-logo {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.logo-icon {
-    font-size: 2rem;
+.img-logo {
+    height: 45px;
+    width: auto;
 }
 
-.logo-texto strong {
-    display: block;
-    font-size: 1.3rem;
+.brand {
+    display: flex;
+    align-items: center;
     line-height: 1;
 }
 
-.logo-texto small {
-    color: var(--gris-medio);
-    font-size: 0.75rem;
+.tech {
+    color: var(--azul);
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
-.nav {
+.plus {
+    color: var(--negro);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.c-sub span.slogan {
+    color: var(--gris-medio);
+    font-size: 0.75rem;
+    display: block;
+}
+
+.c-nav {
     display: flex;
     gap: 25px;
 }
 
-.nav a {
+.c-nav a {
     font-size: 0.95rem;
     color: var(--gris-oscuro);
+    text-decoration: none;
     padding-bottom: 4px;
 }
 
-.nav a.activo,
-.nav a:hover {
+.c-nav a#nav-activo,
+.c-nav a:hover {
     color: var(--negro);
     font-weight: bold;
     border-bottom: 2px solid var(--azul);
 }
 
-.buscador {
+.c-buscar {
     display: flex;
     align-items: center;
 }
 
-.buscador input {
-    padding: 8px 14px;
+.c-icon-buscar {
+    padding: 7px 9px;
     border: 1px solid var(--gris-claro);
-    border-radius: 6px 0 0 6px;
-    outline: none;
-    font-size: 0.9rem;
-    width: 180px;
+    border-right: none;
+    border-radius: 20px 0 0 20px;
+    display: flex;
 }
 
-.buscador button {
+.img-buscar {
+    height: 20px;
+    width: 20px;
+}
+
+.input-buscar {
+    padding: 8px 14px;
+    border: 1px solid var(--gris-claro);
+    border-left: 0;
+    border-right: 0;
+    outline: none;
+    width: 180px;
+    font-size: 0.9rem;
+}
+
+.buscar {
     padding: 8px 18px;
     background-color: var(--azul);
     color: var(--blanco);
     border: none;
     border-radius: 0 6px 6px 0;
     font-weight: bold;
-    font-size: 0.9rem;
+    cursor: pointer;
 }
 
-.buscador button:hover {
+.buscar:hover {
     background-color: var(--azul-oscuro);
 }
 
-/* ================================
-   HERO / CARRUSEL PRINCIPAL
-================================ */
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
+/* CONTENEDOR PRINCIPAL */
+.c-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
 }
 
-.hero {
+.c-hero {
+    background-color: var(--gris-moderno);
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 40px;
     margin-bottom: 50px;
+    width: 100%;
+    padding: 20px 200px;
 }
 
-.hero-info {
+.c-hero-texto {
     flex: 1 1 450px;
 }
 
@@ -166,51 +185,47 @@ main {
     letter-spacing: 1.5px;
 }
 
-.hero-info h1 {
+.titulo-hero {
     font-size: 2.5rem;
     line-height: 1.15;
     margin: 12px 0;
 }
 
-.hero-info p {
+.info-hero {
     color: var(--gris-medio);
     margin-bottom: 25px;
-    font-size: 1rem;
 }
 
-.btn-principal {
+.prin {
     display: inline-block;
     padding: 12px 24px;
     background-color: var(--negro);
     color: var(--blanco);
     border-radius: 6px;
     font-weight: bold;
-    font-size: 0.95rem;
+    text-decoration: none;
 }
 
-.btn-principal:hover {
-    background-color: var(--gris-oscuro);
-}
-
-/* CARRUSEL */
-.carrusel-contenedor {
+.c-carrusel {
     flex: 1 1 550px;
 }
 
-.carrusel-imagen-box {
+.c-box {
     width: 100%;
     height: 280px;
-    background-color: #bbbbbb;
+    background-color: #bbb;
     border-radius: 8px;
     position: relative;
     overflow: hidden;
-    background-image:
-        linear-gradient(to bottom right, transparent 49.5%, #888888 49.5%, #888888 50.5%, transparent 50.5%),
-        linear-gradient(to top right, transparent 49.5%, #888888 49.5%, #888888 50.5%, transparent 50.5%);
-    transition: background-color 0.3s;
+    transition: 0.3s;
 }
 
-.carrusel-flecha {
+.img-carrusel {
+    width: 100%;
+    height: 100%;
+}
+
+.flecha {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -220,19 +235,21 @@ main {
     color: var(--blanco);
     border: none;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    cursor: pointer;
     z-index: 10;
 }
 
-.carrusel-flecha.izq { left: 15px; }
-.carrusel-flecha.der { right: 15px; }
+.izq {
+    left: 15px;
+}
 
-.carrusel-pie {
+.der {
+    right: 15px;
+}
+
+.c-pie {
     position: absolute;
     bottom: 0;
-    left: 0;
     width: 100%;
     padding: 12px 20px;
     background-color: rgba(0, 0, 0, 0.7);
@@ -242,12 +259,11 @@ main {
     align-items: center;
 }
 
-.carrusel-titulo {
+.titulo-carr {
     font-size: 0.9rem;
-    font-weight: 500;
 }
 
-.carrusel-puntos {
+.c-puntos {
     display: flex;
     gap: 8px;
 }
@@ -264,25 +280,34 @@ main {
     background-color: var(--blanco);
 }
 
-/* ================================
-   NUESTROS SERVICIOS
-================================ */
-.servicios-section {
-    margin-bottom: 50px;
-}
-
-.servicios-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-}
-
-.servicios-grid {
+/* GENERAL */
+.c-tarjeta {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    margin-bottom: 50px;
 }
 
-.tarjeta-servicio {
+.c-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.titulo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.main-2{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* SERVICIOS */
+.t-serv {
     flex: 1 1 230px;
     border: 1px solid var(--gris-claro);
     border-radius: 8px;
@@ -293,103 +318,62 @@ main {
     background-color: var(--blanco);
 }
 
-.imagen-servicio-box {
+.c-icon {
     width: 100%;
     height: 130px;
     border-radius: 6px;
     overflow: hidden;
     position: relative;
-    cursor: pointer;
 }
 
-.img-normal,
-.img-hover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: opacity 0.3s ease;
-}
-
-.img-hover {
-    opacity: 0;
-    background-color: #999999;
-}
-
-/* HOVER EN IMAGEN DE SERVICIO */
-.imagen-servicio-box:hover .img-hover {
-    opacity: 1;
-}
-
-.tarjeta-servicio h3 {
+.titulo-serv {
     font-size: 1.1rem;
+    font-weight: bold;
 }
 
-.tarjeta-servicio p {
+.info-serv {
     color: var(--gris-medio);
     font-size: 0.85rem;
     flex-grow: 1;
 }
 
-.btn-secundario {
+.mas {
     width: 100%;
     padding: 8px;
     background-color: var(--blanco);
     border: 1px solid var(--negro);
     border-radius: 4px;
-    font-size: 0.85rem;
     font-weight: bold;
+    cursor: pointer;
 }
 
-.btn-secundario:hover {
+.mas:hover {
     background-color: var(--gris-fondo);
 }
 
-/* ================================
-   ÚLTIMOS PROYECTOS
-================================ */
-.proyectos-section {
-    margin-bottom: 40px;
-}
-
-.proyectos-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.proyectos-header h2 {
-    font-size: 1.8rem;
-}
-
-.link-ver-todos {
+/* PROYECTOS */
+.link {
     color: var(--azul);
     font-weight: bold;
-    font-size: 0.95rem;
+    text-decoration: none;
 }
 
-.proyectos-grid {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.tarjeta-proyecto {
+.t-proy {
     flex: 1 1 300px;
     border: 1px solid var(--gris-claro);
     border-radius: 8px;
     padding: 15px;
     background-color: var(--blanco);
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: 0.2s;
 }
 
-.tarjeta-proyecto:hover {
+.t-proy:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.imagen-proyecto-box {
+.c-img {
     width: 100%;
     height: 140px;
     border-radius: 6px;
@@ -398,7 +382,7 @@ main {
     margin-bottom: 12px;
 }
 
-.badge-tag {
+.badge {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -410,7 +394,7 @@ main {
     z-index: 5;
 }
 
-.btn-like {
+.like {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -419,43 +403,45 @@ main {
     border-radius: 12px;
     padding: 3px 10px;
     display: flex;
-    align-items: center;
     gap: 4px;
-    font-size: 0.8rem;
     font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
     z-index: 5;
+    cursor: pointer;
 }
 
-.btn-like.liked {
-    color: var(--rojo-like);
+.like.liked {
+    color: #e53935;
 }
 
-.btn-like.liked .corazon {
-    content: "♥";
+.c-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
-.tarjeta-proyecto h3 {
+.titulo-proy {
     font-size: 1.1rem;
-    margin-bottom: 4px;
+    font-weight: bold;
 }
 
-.tarjeta-proyecto p {
-    color: var(--gris-medio);
+.sub-proy {
     font-size: 0.85rem;
+    color: var(--gris-medio);
 }
 
-/* ================================
-   FOOTER
-================================ */
-.footer {
-    width: 100%;
+.info-oculta,
+.tech-oculta {
+    display: none;
+}
+
+/* FOOTER */
+.c-footer {
     background-color: var(--negro);
     color: var(--blanco);
     padding: 30px 5%;
 }
 
-.footer-contenido {
+.c-body-footer {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -465,50 +451,34 @@ main {
     gap: 20px;
 }
 
-.footer .logo-texto small {
+.slogan-footer {
     color: var(--gris-claro);
+    font-size: 0.75rem;
 }
 
-.footer-nav {
+.c-nav-footer {
     display: flex;
     gap: 20px;
 }
 
-.footer-nav a {
+.c-nav-footer a {
     color: var(--gris-claro);
     font-size: 0.9rem;
+    text-decoration: none;
 }
 
-.footer-nav a:hover {
-    color: var(--blanco);
-}
-
-.footer-sociales {
+.c-redes {
     display: flex;
-    gap: 12px;
+    gap: 5px;
 }
 
-.footer-sociales a {
-    width: 32px;
-    height: 32px;
-    border: 1px solid var(--gris-medio);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--blanco);
-    font-size: 0.85rem;
-    font-weight: bold;
+.red img {
+    height: 44px;
+    border-radius: 50%;
 }
 
-.footer-sociales a:hover {
-    background-color: var(--gris-oscuro);
-}
-
-/* ================================
-   MODAL PROYECTO
-================================ */
-.modal-overlay {
+/* MODAL REDUCIDO */
+.c-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -519,27 +489,24 @@ main {
     align-items: center;
     justify-content: center;
     opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: 0.3s ease;
     z-index: 1000;
 }
 
-.modal-overlay.activo {
+.c-modal.activo {
     opacity: 1;
-    pointer-events: auto;
 }
 
-.modal-contenido {
+.c-ventana {
     background-color: var(--blanco);
     width: 90%;
     max-width: 500px;
     border-radius: 8px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
-.btn-cerrar-modal {
+.cerrar {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -550,27 +517,28 @@ main {
     width: 30px;
     height: 30px;
     z-index: 10;
+    cursor: pointer;
 }
 
-.modal-imagen-box {
+.c-img-modal {
     width: 100%;
     height: 180px;
 }
 
-.modal-body {
+.c-body-modal {
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.modal-body .badge-tag {
+.c-body-modal .badge {
     position: static;
     display: inline-block;
     align-self: flex-start;
 }
 
-.modal-tech {
+.c-tech {
     margin-top: 10px;
     padding-top: 10px;
     border-top: 1px solid var(--gris-claro);

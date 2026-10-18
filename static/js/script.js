@@ -1,159 +1,88 @@
 console.log("Conexión con Javascript");
 
-// CARRUSEL PRINCIPAL
+// CARRUSEL
 const imagenes = [
-    {
-        titulo: "Soporte técnico en terreno",
-        color: "#a0a0a0"
-    },
-    {
-        titulo: "Instalación de redes corporativas",
-        color: "#8c9eff"
-    },
-    {
-        titulo: "Desarrollo de software a medida",
-        color: "#b9f6ca"
-    },
-    {
-        titulo: "Ciberseguridad y protección de datos",
-        color: "#ffe082"
-    }
+    { src: "static/img/Soporte técnico en terreno.jpg", titulo: "Soporte técnico en terreno", color: "#a0a0a0" },
+    { src: "static/img/Instalación de redes corporativas.png", titulo: "Instalación de redes corporativas", color: "#8c9eff" },
+    { src: "static/img/Desarrollo de software a medida.jpg", titulo: "Desarrollo de software a medida", color: "#b9f6ca" },
+    { src: "static/img/Ciberseguridad y protección de datos.jpg", titulo: "Ciberseguridad y protección de datos", color: "#ffe082" }
 ];
 
 let indiceActual = 0;
-
-// 3. Función principal
 function cambiarImagen(direccion) {
-    indiceActual = indiceActual + direccion;
-    if (indiceActual >= imagenes.length) {
-        indiceActual = 0;
-    }
-    else if (indiceActual < 0) {
-        indiceActual = imagenes.length - 1;
-    }
-    const carruselBox = document.getElementById("carruselBox");
-    const carruselTitulo = document.getElementById("carruselTitulo");
-    if (carruselTitulo) {
-        carruselTitulo.textContent = imagenes[indiceActual].titulo;
-    }
-    if (carruselBox) {
-        carruselBox.style.backgroundColor = imagenes[indiceActual].color;
-    }
-    const puntos = document.querySelectorAll(".punto");
-    puntos.forEach(function (punto, index) {
-        if (index === indiceActual) {
-            punto.className = "punto activo";
-        } else {
-            punto.className = "punto";
-        }
+    indiceActual += direccion;
+    if (indiceActual >= imagenes.length) indiceActual = 0;
+    else if (indiceActual < 0) indiceActual = imagenes.length - 1;
+
+    document.getElementById("tit-carr").innerText = imagenes[indiceActual].titulo;
+    document.getElementById("box").style.backgroundColor = imagenes[indiceActual].color;
+    document.getElementById("img-carr").src = imagenes[indiceActual].src;
+
+    document.querySelectorAll(".punto").forEach((punto, index) => {
+        punto.className = index === indiceActual ? "punto activo" : "punto";
     });
 }
 
-// Botones del carrusel
-const btnIzq = document.getElementById("carruselIzq");
-const btnDer = document.getElementById("carruselDer");
+document.getElementById("izq").onclick = () => cambiarImagen(-1);
+document.getElementById("der").onclick = () => cambiarImagen(1);
 
-if (btnIzq) {
-    btnIzq.onclick = function () {
-        cambiarImagen(-1);
-    };
-}
+// IMAGEN HOVER
+const imgActual = document.querySelectorAll(".img-normal");
+const rutasHover = [
+    "static/images/Soporte técnico.jpg",
+    "static/images/Redes y conectividad.png",
+    "static/images/Desarrollo web.jpg",
+    "static/images/Seguridad informática.jpg"
+];
+const rutasNormal = [
+    "static/images/1-soporte-tecnico-informatico-por-que-es-importante-para-la-productividad-empresarial.png",
+    "static/images/2-Que-es-una-instalacion-de-redes-1024x566.jpg.png",
+    "static/images/3-diferencia-diseno-web-desarrollo-web.png",
+    "static/images/4-principios-de-la-seguridad-informatica-y-su-implementacion1.png"
+];
 
-if (btnDer) {
-    btnDer.onclick = function () {
-        cambiarImagen(1);
-    };
-}
-
-// Clic en los puntos inferiores para saltar directamente a una posición
-const puntos = document.querySelectorAll(".punto");
-puntos.forEach(function (punto, index) {
-    punto.onclick = function () {
-        indiceActual = index;
-        cambiarImagen(0);
-    };
+imgActual.forEach((img, i) => {
+    img.addEventListener("mouseover", () => img.src = rutasHover[i]);
+    img.addEventListener("mouseout", () => img.src = rutasNormal[i]);
 });
 
-
-// CONTEO ME GUSTA
-const botonesLike = document.querySelectorAll(".btn-like");
-
-botonesLike.forEach(function (boton) {
-    boton.onclick = function (e) {
+// ME GUSTA
+document.querySelectorAll(".like").forEach(boton => {
+    boton.onclick = (e) => {
         e.stopPropagation();
+        const countSpan = boton.querySelector(".count");
+        const corazonSpan = boton.querySelector(".corazon");
+        let count = parseInt(countSpan.innerText);
 
-        let countSpan = boton.querySelector(".count-like");
-        let corazonSpan = boton.querySelector(".corazon");
-        let contadorActual = parseInt(boton.getAttribute("data-count"));
-
-        if (boton.className.includes("liked")) {
-            contadorActual = contadorActual - 1;
-            boton.className = "btn-like";
-            corazonSpan.textContent = "♡";
+        if (boton.classList.contains("liked")) {
+            count--;
+            boton.classList.remove("liked");
+            corazonSpan.innerText = "♡";
         } else {
-            contadorActual = contadorActual + 1;
-            boton.className = "btn-like liked";
-            corazonSpan.textContent = "♥";
+            count++;
+            boton.classList.add("liked");
+            corazonSpan.innerText = "♥";
         }
-
-        boton.setAttribute("data-count", contadorActual);
-        countSpan.textContent = contadorActual;
+        countSpan.innerText = count;
     };
 });
-
 
 // MODAL
-const tarjetasProyecto = document.querySelectorAll(".tarjeta-proyecto");
-const modalProyecto = document.getElementById("modalProyecto");
-const btnCerrarModal = document.getElementById("btnCerrarModal");
+const modal = document.getElementById("modal");
+document.querySelectorAll(".t-proy").forEach(tarjeta => {
+    tarjeta.onclick = () => {
+        document.getElementById("m-tit").innerText = tarjeta.querySelector(".titulo-proy").innerText;
+        document.getElementById("m-badge").innerText = tarjeta.querySelector(".badge").innerText;
+        document.getElementById("m-info").innerText = tarjeta.querySelector(".info-oculta").innerText;
+        document.getElementById("m-tech").innerText = tarjeta.querySelector(".tech-oculta").innerText;
 
-const modalTitulo = document.getElementById("modalTitulo");
-const modalCategoria = document.getElementById("modalTag");
-const modalDescripcion = document.getElementById("modalDescripcion");
-const modalTech = document.getElementById("modalTech");
-const modalImagen = document.getElementById("modalImagen");
+        const rutaImg = tarjeta.querySelector(".img-proy").src;
+        document.getElementById("m-img").innerHTML = `<img src="${rutaImg}">`;
 
-tarjetasProyecto.forEach(function (tarjeta) {
-    tarjeta.onclick = function () {
-        const titulo = tarjeta.getAttribute("data-titulo");
-        const categoria = tarjeta.getAttribute("data-categoria");
-        const descripcion = tarjeta.getAttribute("data-descripcion");
-        const tech = tarjeta.getAttribute("data-tech");
-
-        if (modalTitulo) modalTitulo.textContent = titulo;
-        if (modalCategoria) modalCategoria.textContent = categoria;
-        if (modalDescripcion) modalDescripcion.textContent = descripcion;
-        if (modalTech) modalTech.textContent = tech;
-        if (modalImagen) modalImagen.textContent = "Vista previa: " + titulo;
-
-        if (modalProyecto) {
-            modalProyecto.className = "modal-overlay activo";
-        }
+        modal.className = "c-modal activo";
     };
 });
 
-if (btnCerrarModal && modalProyecto) {
-    btnCerrarModal.onclick = function () {
-        modalProyecto.className = "modal-overlay";
-    };
-
-    modalProyecto.onclick = function (e) {
-        if (e.target === modalProyecto) {
-            modalProyecto.className = "modal-overlay";
-        }
-    };
-}
-
-
-// BUSCADOR
-const inputBuscar = document.getElementById("inputBuscar");
-const btnBuscar = document.getElementById("btnBuscar");
-
-if (btnBuscar && inputBuscar) {
-    btnBuscar.onclick = function () {
-        const texto = inputBuscar.value;
-        if (texto.length > 0) {
-            console.log("Buscando: " + texto);
-        }
-    };
-}
+document.getElementById("cerrar").onclick = () => {
+    modal.className = "c-modal";
+};
