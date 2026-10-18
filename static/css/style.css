@@ -491,10 +491,12 @@ body {
     opacity: 0;
     transition: 0.3s ease;
     z-index: 1000;
+    pointer-events: none;
 }
 
 .c-modal.activo {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .c-ventana {
