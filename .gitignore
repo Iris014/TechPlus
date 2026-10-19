@@ -1,9 +1,3 @@
-# Created by https://www.toptal.com/developers/gitignore/api/openframeworks,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=openframeworks,visualstudiocode
-
-### OpenFrameworks ###
-# ignore generated binaries
-# but not the data folder
 
 /bin/*
 !/bin/data/
@@ -76,6 +70,18 @@ Desktop.ini
 # Android
 .csettings
 
+### OpenFrameworks+VisualStudio Patch ###
+.vs/
+*.ncb
+*.opendb
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+*.psess
+*.vsp
+*.vspx
+*.sap
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -94,5 +100,3 @@ Desktop.ini
 # Ignore all local history of files
 .history
 .ionide
-
-# End of https://www.toptal.com/developers/gitignore/api/openframeworks,visualstudiocode
